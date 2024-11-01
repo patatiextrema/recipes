@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Login Básico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Contraseña:</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required>
+                <button type="button" id="togglePassword" onclick="togglePasswordVisibility()">Mostrar</button>
+            </div>
+            <button type="button" onclick="login()">Ingresar</button>
+        </form>
+        <p id="errorMessage" class="error-message"></p>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Sistema de autenticación básico (solo para demostración)
+            if (username === 'admin' && password === '1234') {
+                alert('Login exitoso');
+            } else {
+                errorMessage.textContent = 'Usuario o contraseña incorrectos';
+            }
+        }
+
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const toggleButton = document.getElementById('togglePassword');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleButton.textContent = 'Ocultar';
+            } else {
+                passwordField.type = 'password';
+                toggleButton.textContent = 'Mostrar';
+            }
+        }
+    </script>
+</body>
+</html>
